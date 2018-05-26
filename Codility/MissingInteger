@@ -1,0 +1,15 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    var temp = [];
+    for (var i = 0; i < A.length; i++){
+        if (temp[A[i]] == undefined && A[i] > 0) temp[A[i]] = 1;
+    }
+    for (var i = 1; i < temp.length; i++){
+        if (temp[i] == undefined) return i;
+    }
+    if (temp.length == 0) return 1;
+    return temp.length;
+}
