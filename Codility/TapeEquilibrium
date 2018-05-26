@@ -1,0 +1,32 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    // Brute Force
+    // var left = 0;
+    // var right = 0;
+    // var result = Number.MAX_VALUE;
+    // for (var i=0; i< A.length; i++){
+    //     left += A[i];
+    //     for (var j=i+1; j<A.length; j++){
+    //         right += A[j];
+    //     }
+    //     if (Math.abs(left-right) < result) result = Math.abs(left-right);
+    //     right = 0;
+    // }
+    // return result;
+    
+    var temp = [A[0]];
+    var result = Number.MAX_VALUE;
+    for (var i = 1; i < A.length; i++){
+        temp[i] = temp[i-1]+A[i];
+    }
+    var left = 0;
+    for (var i = 0; i < temp.length-1; i++){
+        left += A[i];
+        var right = temp[temp.length-1]-temp[i];    
+        if (Math.abs(left-right) < result) result = Math.abs(left-right);
+    }
+    return result;
+}
